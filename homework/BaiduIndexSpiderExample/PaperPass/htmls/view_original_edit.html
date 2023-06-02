@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改文档</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="bg-grey PLR40">
+        <div class="paper-txt P30 PB0">
+            <div class="alert alert-success" role="alert">此为您在“详细报告”中修改后临时保存的内容，编辑过的内容会变绿色</div>
+            <div class="paper-content"></div>
+            <div class="paper-footer">
+                <p>检测报告由<a href="https://www.paperpass.com/" target="_black">PaperPass</a>文献相似度检测系统生成</p>
+                <p>Copyright © 2007-<span class="getFullYear"></span> PaperPass</p>
+            </div>
+        </div>
+    </div>
+    <span style="display: none;">This__is__the__place__to__load__the__google__statistics__code.__The__offline__version__is__hidden,__but__the__online__version__will__have__it.</span>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/lib.js"></script>
+<script src="js/texthtmldata.js"></script>
+<script>
+    Report.report_id = '6294bc169761092zp';
+</script>
+<script type="text/javascript">
+    (function(System,$){
+        var cache = new System.Cache(System.report_id,localStorage);
+        $(function(){
+            var data = detailJsonData.reduce((total, currentValue) => {
+                total[currentValue.sectionCount] = total[currentValue.sectionCount] ? [...total[currentValue.sectionCount], currentValue] : [currentValue];
+                return total;
+            }, {});
+            for (const sectionCount in data) {
+                var text = '';
+                $.each(data[sectionCount], function ($id, {content, sectionCount, score}) {
+                    var content = content.replace(/[<>\&]/g, function(i) {return '&#'+ i.charCodeAt(0) +';'});
+                    text += content;
+                });
+                var p = `<p data-sectionCount="${sectionCount}">${text}</p>`;
+                $(".paper-content").append(p);
+            }
+            $.each(cache.get(),function(){
+                $('[data-sectionCount='+this.id+']').addClass('g-font-color green').html(this.text);
+            });
+            var date = new Date();
+            $(".getFullYear").html(date.getFullYear());
+        });
+    })(Report,jQuery);
+
+</script>
+</html>

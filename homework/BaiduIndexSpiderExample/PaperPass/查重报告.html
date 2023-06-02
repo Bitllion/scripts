@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>python 百度指数 爬虫 可视化分析_PaperPass检测报告</title>
+    <link rel="shortcut icon" href="htmls/images/favicon.ico">
+    <link rel="stylesheet" href="htmls/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="htmls/css/iconfont.css">
+    <link rel="stylesheet" href="htmls/css/iframe.css"/>
+    <link rel="stylesheet" href="htmls/css/style.css"/>
+</head>
+<body style="overflow: hidden;">
+<noscript>
+    <div class="alert-warning">
+        <p>您当前的浏览器的安全设置导致脚本被禁用！请<b>更换浏览器</b>。</p>
+    </div>
+</noscript>
+<div id="m-header">
+    <div class="paper-header">
+        <div class="header-nav">
+            <a href="https://www.paperpass.com/" target="_blank" class="nav-logo">
+            <img src="htmls/images/logo.png">
+                <p class="g-font-color green text-right g-font-s16">旗舰版</p>
+            </a>
+            <div class="nav-tit">
+                <h4>python 百度指数 爬虫 可视化分析</h4>
+                论文作者：<span class="MR10">1</span>
+                
+                提交时间：<span class="submitTime">2022-5-30 20:44:06</span>
+            </div>
+            <div class="nav-detail">
+                <ul class="nav-detail-info">
+                    <li>论文字数：<span class="paperNum">9299</span></li>
+                    <li>段落个数：<span class="sectionNum">255</span></li>
+                    <li>句子个数：<span class="sentenceNum">347</span></li>
+                </ul>
+                <div class="nav-detail-similar">
+                    总体相似度
+                    <p class="text-right">
+                        <span class="similarNum">11%</span>
+                    </p>
+                    <span class="progress"><span class="progress-bar green" style="width: 11%;"></span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="nav" id="m-nav">
+    <div style="display: flex;">
+        <a href="https://www.paperpass.com/" target="_blank" class="header_logo">
+            <img src="htmls/images/header_logo.png" class="tab_img" style="margin-top: -2px;"></a>
+        <ul class="tab pull-left clearfix" tab-a="ul" id="nav_ul">
+        <li class="active active_li">
+        <a href="htmls/detail_report.html" target="main">详细报告</a>
+            <span class="grey-spacer"></span>
+        </li>
+                    <li  class="active_li">
+                <a href="htmls/text_proofreading.html" target="main">文字校审</a>
+                <span class="grey-spacer"></span>
+            </li>
+                <li  class="active_li">
+        <a href="htmls/comprehensive_assessment.html" target="main">综合评估</a>
+            <span class="grey-spacer"></span>
+        </li>
+
+
+        <li>
+            <a href="简明报告PDF打印版.pdf" target="_blank">打印PDF</a>
+            <span class="grey-spacer"></span>
+        </li>
+
+        <li class="xm-smart-rewrite">
+            <a href="https://www.paperpass.com/partner/xiaomo/go/{{pid}}" target="_blank">智能降重</a>
+            <span class="grey-spacer"></span>
+        </li>
+
+        <li class="active_li">
+            <a href="htmls/help.html" target="main">使用帮助</a>
+        </li>
+    </ul>
+    </div>
+    <div class="HeaderButton">
+        <div class="clickimg"></div>
+    </div>
+    <div style="display: flex;align-items: center;">
+        <div class="report_number">
+            <p class="g-font-color green" style="display: flex; align-items: center;">
+                <span>报告编号： </span>
+                <span>6294BC169761092ZP</span>
+                <a href="https://www.paperpass.com/check/6294BC169761092ZP" target="_blank" class="g-btn g-btn-default g-btn-sm transparent ML15">查询真伪</a>
+
+            </p>
+        </div>
+        <div class="download-format ML20 none" style="position: relative;">
+            <span class="icon iconfont icon-download download_img"></span>
+            <span class="detailed_description">下载</span>
+            <div class="dropdown-menu">
+                <ul>
+                    <li><a href="/report/download/pdf/6294bc169761092zp/" target="_blank"><span class="icon iconfont icon-PDF"></span><span>下载PDF报告</span></a></li>
+                    <li><a href="/report/download/zip/6294bc169761092zp/" target="_blank"><span class="icon iconfont icon-html"></span><span>下载离线网页版</span></a></li>
+                    <li><a href="/report/download/original/6294bc169761092zp/" target="_blank"><span class="icon iconfont icon-original"></span><span>下载原文件</span></a></li>
+<!--                    <li><a href="/" target="_blank"><span class="icon iconfont icon-word"></span><span>下载Word版本</span></a></li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="layui-layer-shade" id="section-edit-modal">
+    <div class="layui-layer layui-layer-page layui-layer-prompt" id="layui-layer-section">
+        <div class="layui-layer-header">
+            <div class="layui-layer-title">修改段落（第<span class="section-id"></span>段）</div>
+            <span class="layui-layer-setwin">
+                <a class="layui-layer-ico layui-layer-close layui-layer-close1" href="javascript:;"></a>
+            </span>
+        </div>
+        <div class="layui-layer-body">
+            <div class="layui-layer-content">
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <div class="tipBtn">原文</div>
+                        <div class="section-txt section-txt-prev"></div>
+                    </div>
+                    <div class="pull-right">
+                        <div class="tipBtn bgdeep">修改</div>
+                        <textarea class="section-txt section-txt-next"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-layer-footer">
+                <div class="layui-layer-btn">
+                    <a class="layui-layer-cancel" tpl-section-cancle="btn">取消保存</a>
+                    <a class="layui-layer-save" tpl-section-save="btn">临时保存</a>
+                </div>
+                <div class="attention">
+                    <p>注：修改完本段落后，点击“临时保存”，修改后的内容可在“修改文档”页面中查看。</p>
+                    <p>本功能受系统环境影响，请尽快将修改后的文章保存到您的论文中。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 修改文档弹窗 -->
+<div class="layui-layer-shade" id="modify-document-modal">
+    <div class="layui-layer layui-layer-page layui-layer-prompt" id="layui-layer-document">
+        <div class="layui-layer-header">
+            <div class="layui-layer-title">修改文档</div>
+            <span class="layui-layer-setwin">
+            <a class="layui-layer-ico layui-layer-close layui-layer-close1" href="javascript:;"></a>
+        </span>
+        </div>
+        <div class="layui-layer-body">
+            <iframe src="htmls/view_original_edit.html" name="modify_document" scrolling="no" frameborder="0" width="100%" height="100%" id="modifyDocument"></iframe>
+        </div>
+    </div>
+</div>
+<div id="m-content" class="clearfix over-h MT10">
+    <iframe src="htmls/detail_report.html" name="main" scrolling="no" frameborder="0" id="childIframe"></iframe>
+</div>
+<span style="display: none;">This__is__the__place__to__load__the__google__statistics__code.__The__offline__version__is__hidden,__but__the__online__version__will__have__it.</span>
+<span style="display: none;">This__is__the__place__to__load__the__download__file__code.__The__offline__version__is__hidden,__but__the__online__version__will__have__it.</span>
+</body>
+<script type="text/javascript" src="htmls/js/jquery.min.js"></script>
+<script type="text/javascript" src="htmls/js/lib.js"></script>
+<script type="text/javascript" src="htmls/js/detaildata.js"></script>
+<script type="text/javascript">
+    Report.report_id = '6294bc169761092zp';
+    var isHasWordReport = true;
+</script>
+<script type="text/javascript" src="htmls/js/top.js"></script>
+<script type="text/javascript">
+    (function(System,$){
+        'use strict';
+        System.operateState.saveId(Report.report_id)
+
+        var tab = System.Paper.tab();
+        $(function(){
+            try {
+                if ("undefined" === typeof localStorage || "undefined" === typeof JSON) {
+                    $('body').append('<div class="alert-warning"><p>您当前的浏览器不支持段落修改功能，如需使用此功能请<b>更换其它浏览器</b>！</p></div>');
+                }
+            } catch (e){
+                $('body').append('<div class="alert-warning"><p>您当前的浏览器不支持段落修改功能，如需使用此功能请<b>更换其它浏览器</b>！</p></div>');
+            }
+            $(document).on('click','[tab-a="ul"] .active_li',function(){
+                tab.call(this);
+            });
+        });
+    })(Report,jQuery);
+</script>
+</html>

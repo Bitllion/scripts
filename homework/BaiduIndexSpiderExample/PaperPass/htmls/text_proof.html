@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字校审</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/left.css">
+    <STYLE>
+        #mbxsgxktna {
+            color: #000;
+        }
+
+        #mbxsgxktna .spaceWrap {
+            white-space: pre-wrap;
+        }
+
+        .upkmzjakmc {
+            width: 793.33px;
+        }
+
+        .stl_view {
+            min-height: 1120px;
+            font-size: 14px;
+            line-height: 24px;
+            padding: 60px;
+            white-space: normal;
+            word-wrap: break-word;
+            word-break: break-all;
+            box-sizing: border-box;
+        }
+
+        .section_edit {
+            width: fit-content;
+            width: -webkit-fit-content;
+            width: -moz-fit-content;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            font-size: 12px;
+            margin: 10px 0 5px;
+            border: 1px solid #d4d4d4;
+            border-radius: 4px;
+            background: #f2f2f2;
+            box-shadow: 0px 1px 10px 0px rgb(45 49 52 / 0%), 0px 1px 7px 0px rgb(45 49 52 / 13%), inset 0px 1px 0px 0px rgb(255 255 255 / 38%);
+            padding: 0 11px;
+        }
+
+        .section_edit + span, .section_edit + a {
+            margin-left: 25px;
+        }
+        
+        .proof_type {
+          padding: 0;
+          color: #000000;
+          border-bottom-width: 3px;
+        }
+
+        .noletter {
+            letter-spacing: -999px;
+        }
+
+        .noletter span {
+            letter-spacing: 0;
+        }
+
+        .red, .red:hover, .red:focus, .red:active {
+            color: #f12828 !important;
+        }
+        
+        .orange, .orange:hover, .orange:focus, .orange:active {
+            color: #f39800 !important;
+        }
+    </STYLE>
+</head>
+<body id="plain-text-page">
+    <!-- 阴影 -->
+    <div class="Shadow"></div>
+    <!-- 切换弹窗 -->
+    <div class="layui-layer-shade">
+		<div class="layui-layer layui-layer-page layui-layer-switch">
+			<div class="layui-layer-title">切换模式</div>
+			<div class="layui-layer-setwin">
+				<a class="layui-layer-close layui-layer-close1" href="javascript:;"></a>
+			</div>
+            <div class="layui-layer-content">确认切换至“标准模式”吗？</div>
+            <div class="layui-layer-btn">
+                <a class="layui-layer-btn0 detail_btn" href="standard_proof.html">确定</a>
+                <a class="layui-layer-btn1">取消</a>
+			</div>
+		</div>
+	</div>
+    <!-- 页码 -->
+    <div class="top_Num"></div>
+    <!-- 目录 -->
+    <div class="Fixed">
+        <div class="catalog">
+            <div class="tab_icon"></div>
+            <div class="toall_div Switch">
+                <div class="tip Switch_tip">切换模式</div>
+            </div>
+            <div class="toall_div page_nav_btn">
+                <div class="tip">页面导航</div>
+            </div>
+            <a href="#1" class="top_a">
+                <div class="toall_div top pre_icon">
+                    <div class="tip tip1">上一页</div>
+                </div>
+            </a>
+            <a href="#1" class="bottom_a">
+                <div class="toall_div bottom next_icon">
+                    <div class="tip tip1">下一页</div>
+                </div>
+            </a>
+            <div class="page_Num">
+                <div class="tip page_Numtip">输入页码</div>
+                <input type="text" value="1" class="input_pageNum">
+            </div>
+            <a href="#1" id="toall_Num">
+                <div class="toall_Num toall_div">
+                    <div class="tip toall_Numtip">跳转</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!-- 缩放 -->
+    <div class="Fixed_bottom">
+        <a href="#" id="jumpBtn" style="display: none;">
+            <span class="jumpBtn"></span>
+        </a>
+        <div class="percent_list">
+            <a href="#" class="percent_li jump_page"><span class="li_text">50</span><span>%</span></a>
+            <a href="#" class="percent_li jump_page"><span class="li_text">75</span><span>%</span></a>
+            <a href="#" class="percent_li jump_page"><span class="li_text">100</span><span>%</span></a>
+            <a href="#" class="percent_li jump_page"><span class="li_text">125</span><span>%</span></a>
+            <a href="#" class="percent_li jump_page"><span class="li_text">150</span><span>%</span></a>
+            <a href="#" class="percent_li jump_page"><span class="li_text">175</span><span>%</span></a>
+            <a href="#" class="percent_li jump_page"><span class="li_text">200</span><span>%</span></a>
+        </div>
+        <div class="bottomButton">
+            <a href="#" id="originalButton" class="originalButton allButton jump_page">
+                <div class="bot_tip original_tip">原始大小</div>
+                <div class="original_img bottom_img"></div>
+            </a>
+            <a href="#" id="fitPageButton" class="fitPageButton allButton jump_page">
+                <div class="bot_tip fitPage_tip">适合高度</div>
+                <div class="fitPage_img bottom_img"></div>
+            </a>
+            <a href="#" id="fitWidthButton" class="fitWidthButton allButton jump_page">
+                <div class="bot_tip fitWidt_tip">适合宽度</div>
+                <div class="fitWidth_img bottom_img"></div>
+            </a>
+            <a href="#" id="zoomOutButton" class="zoomOutButton allButton jump_page">
+                <div class="bot_tip zoomOut_tip">放大</div>
+                <div class="zoomOut_img bottom_img"></div>
+            </a>
+            <a href="#" id="CollagenButton" class="CollagenButton allButton">
+                <div class="bot_tip percent_tip">缩放比例</div>
+                <div class="Collagen_img ">
+                    <span class="percent_num">100</span><span>%</span>
+                </div>
+            </a>
+            <a href="#" id="zoomInButton" class="zoomButton allButton jump_page">
+                <div class="bot_tip zoomIn_tip">缩小</div>
+                <div class="zoomIn_img bottom_img"></div>
+            </a>
+            <a href="#" id="menuButton" class="menuButton tip_Button">
+                <div class="bot_tip menu_tip">缩放</div>
+                <div class="menu_img bottom_img"></div>
+            </a>
+        </div>
+    </div>
+    <!-- 缩放弹窗 -->
+    <div class="zoom-shade">
+        <img class="zoom-load" src="./images/loading.gif" alt="">
+    </div>
+    <!-- 折叠按钮 -->
+    <div class="btn_fold">
+        <div class="btn_fold_right"></div>
+        <div class="btn_fold_left"></div>
+    </div>
+    <!-- word页面 -->
+    <div id="mbxsgxktna"></div>
+    
+    <span style="display: none;">This__is__the__place__to__load__the__google__statistics__code.__The__offline__version__is__hidden,__but__the__online__version__will__have__it.</span>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/lib.js"></script>
+<script src="js/detaildata.js"></script>
+<script src="js/revisetexthtmldata.js"></script>
+<script>
+    Report.report_id = '6294bc169761092zp';
+    var isHasProofReport = true;
+    var isWord = false;
+</script>
+<script src="js/reportgenerate.js"></script>
+<script src="js/left.js"></script>
+<script type="text/javascript">
+    (function(System, $) {
+        if (revise_is_has_word && revise_is_has_text) {
+            $('.toall_div.Switch').css("display", "block");
+        } else {
+            $('.toall_div.Switch').css("display", "none");
+        }
+        System.operateState.saveId(Report.report_id);
+        var ProofTab = System.operateState.getProofTab(Report.report_id);
+        var tipState;
+        window.addEventListener("message", function(event) {
+            if (event.data.visibility) {
+				tipState = event.data.visibility;
+				$(".page_nav_btn").css("background-position", "-67px -489px");
+			}
+            if (event.data.type) {
+                $(".proof_type").removeClass("active");
+                $(".proof_type").removeClass("ignore");
+                $(".proof_type").css("border-bottom-width", "0px");
+                $(".proof_type." + event.data.type + "").css("border-bottom-width", "3px");
+                $(".proof_type.political").removeClass("red");
+                $(".proof_type.innerDuplicate").removeClass("orange");
+                if (event.data.type == "All") {
+                    $(".proof_type.political").addClass("red");
+                    $(".proof_type.innerDuplicate").addClass("orange");
+                    $(".proof_type").css("border-bottom-width", "3px");
+                }
+                if (event.data.type == "political") {
+                    $(".proof_type.political").addClass("red").css("border-bottom-width", "0px");
+                }
+                if (event.data.type == "innerDuplicate") {
+                    $(".proof_type.innerDuplicate").addClass("orange").css("border-bottom-width", "0px");
+                }
+                ignoreSuggestions(event.data.type);
+                System.operateState.saveProofTab(Report.report_id, event.data.type);
+            }
+            if (event.data.IgnoreResumId) {
+                var id = event.data.IgnoreResumId;
+                IgnoreResum(id);
+                $(".proof_type").removeClass("active");
+            }
+            if (event.data.suggestions) {
+                System.operateState.saveSuggestions(Report.report_id, event.data.suggestions);
+            }
+            if (event.data.column_id) {
+                $(".proof_type").removeClass("active");
+                var suggestions = System.operateState.getSuggestions(Report.report_id);
+                $.each(suggestions, function(index, item) {
+                    if(item.id == event.data.column_id){
+                        if(item.suggestionType != "political" && item.suggestionType != "innerDuplicate"){
+                            $("[id = " + event.data.column_id + "]").find(".proof_type").addClass("active");
+                        }
+                    }
+                });
+            }
+        }, false);
+
+        $(".page_nav_btn").click(function() {
+            if (tipState == "visible") {
+				tipState = "hidden";
+				$(".page_nav_btn").css("background-position", "-67px -489px");
+			} else {
+				tipState = "visible";
+				$(".page_nav_btn").css("background-position", "-104px -489px");
+			};
+            var FoldState = System.operateState.getFoldState2(Report.report_id);
+            var pageNum = $(".pageNum").html();
+            var obj = {
+                navState: tipState,
+                FoldState2: FoldState,
+                pageNum: pageNum
+            };
+            parent.parent.postMessage(obj, "*");
+        });
+
+        parent.parent.postMessage("text", "*");
+
+        ProofTabInit(ProofTab);
+        $(document).on("click", ".proof_type", function() {
+            if (tipState == "visible") {
+                tipState = "hidden";
+                $(".page_nav_btn").css("background-position", "-67px -489px");
+            }
+            var visible = {
+                navState: tipState,
+            };
+            parent.parent.postMessage(visible, "*");
+            $(".proof_type").removeClass("active");
+            var id = $(this).parent("a").attr("id");
+            if (id) {
+                if ($(this).hasClass("political") || $(this).hasClass("innerDuplicate")) {
+                    var span_id = $(this).parent().parent().attr("id");
+                    if ($(this).css("border-bottom-width") == "0px") {
+                        var suggestions = System.operateState.getSuggestions(Report.report_id);
+                        $.each(suggestions, function(index, item) {
+                            if (item.duplicateData != "") {
+                                $.each(item.duplicateData,function(i,element){
+                                    if(element.id == span_id){
+                                        span_id = item.id
+                                    }
+                                });
+                            }
+                        });
+                        $(this).parent("a").attr("href", "proof_right.html#"+span_id+"");
+                    } else {
+                        $.each($("a[id="+id+"] .proof_type"),function(){
+                            $(this).addClass("active");
+                        });
+                        $(this).parent("a").attr("href", "proof_right.html#"+id+"");
+                    }
+                } else {
+                    if ($(this).css("border-bottom-width") != "0px") {
+                        $.each($("a[id="+id+"] .proof_type"),function(){
+                            $(this).addClass("active");
+                        });
+                    }
+                }
+            }
+            var a_href = $(this).parents("a[target=right]").attr("href");
+            var obj = {
+                id: a_href.substring(a_href.lastIndexOf("#"))
+            };
+            parent.postMessage(obj, "*");
+        });
+
+        function ProofTabInit(ProofTab) {
+            $(".proof_type").css("border-bottom-width", "0");
+            $(".proof_type.political").removeClass("red");
+            $(".proof_type.innerDuplicate").removeClass("orange");
+            if (ProofTab == "All") {
+                $(".proof_type").css("border-bottom-width", "3px");
+                $(".proof_type.political").addClass("red");
+                $(".proof_type.innerDuplicate").addClass("orange");
+            }else if (ProofTab == "political") {
+                $(".proof_type.political").addClass("red");
+            } else if (ProofTab == "innerDuplicate") {
+                $(".proof_type.innerDuplicate").addClass("orange");
+            } else {
+                if(ProofTab != ''){
+                    $(".proof_type." + ProofTab + "").css("border-bottom-width", "3px");
+                }
+            }
+            ignoreSuggestions(ProofTab);
+        }
+
+        function ignoreSuggestions(type) {
+            var suggestions = System.operateState.getSuggestions(Report.report_id);
+            $.each(suggestions, function(index, item) {
+                if(item.ignore){
+                    var _this = $("[id = " + item.id + "]").find(".proof_type");
+                    if(item.suggestionType == "political"){
+                        _this.removeClass("red");
+                    } else if (item.suggestionType == "innerDuplicate") {
+                        _this.removeClass("orange");
+                        $.each(item.duplicateData, function(i, v) {
+                            $("[id=" + v.id + "]").find(".proof_type").removeClass("orange");
+                        });
+                    } else if (type == "All" && item.suggestionType !== "innerDuplicate" && item.suggestionType !== "political") {
+                        _this.css("border-bottom-width", "0");
+                        _this.removeClass("ignore");
+                    } else if (type == "ignore" && item.suggestionType !== "innerDuplicate" && item.suggestionType !== "political") {
+                        _this.addClass("ignore").css("border-bottom-width", "3px");
+                    } else {
+                        _this.css("border-bottom-width", "0");
+                    }
+                }
+            });
+        }
+
+        function IgnoreResum(id) {
+            var suggestions = System.operateState.getSuggestions(Report.report_id);
+            for (var i = 0; i < suggestions.length; i++) {  
+                if (suggestions[i].id == id) {
+                    if (suggestions[i].ignore) {
+                        if (suggestions[i].suggestionType == "political") {
+                            $("[id = "+ id +"]").find(".proof_type").removeClass("red");
+                        } else if (suggestions[i].suggestionType == "innerDuplicate") {
+                            $("[id = "+ id +"]").find(".proof_type").removeClass("orange");
+                            $.each(suggestions[i].duplicateData, function(i,v){
+                                $("[id = "+ v.id +"]").find(".proof_type").removeClass("orange");
+                            });
+                        } else {
+                            $("[id = "+ id +"]").find(".proof_type").css("border-bottom-width", "0px");
+                        }
+                    } else {
+                        if (suggestions[i].suggestionType != "political" && suggestions[i].suggestionType != "innerDuplicate") {
+                            $("[id = "+ id +"]").find(".proof_type").css("border-bottom-width", "0px");
+                        }
+                    }
+                }
+            }
+        } 
+    })(Report, jQuery);
+</script>
+</html>

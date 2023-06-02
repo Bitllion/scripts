@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>检测报告-详细报告</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/iframe.css">
+</head>
+<body>
+    <div id="m-content" class="clearfix over-h">
+        <div id="m-primary" class="pull-left">
+            <iframe src="" name="left" scrolling="no" frameborder="0" id="iframeId" class="iframeClass"></iframe>
+        </div>
+        <div id="m-secondary" class="pull-left">
+            <iframe src="sentence_detail.html" name="right" scrolling="no" frameborder="0" width="100%" id="iframeRight" style="background: #fff;"></iframe>
+        </div>
+    </div>
+
+    <span style="display: none;">This__is__the__place__to__load__the__google__statistics__code.__The__offline__version__is__hidden,__but__the__online__version__will__have__it.</span>
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/detaildata.js"></script>
+<script type="text/javascript">
+    (function(System,$){
+        'use strict';
+        Report.report_id = '6294bc169761092zp';
+        System.operateState.saveId(Report.report_id);
+        var FoldState = System.operateState.getFoldState(Report.report_id);
+        if (FoldState == "none") {
+            $("#m-primary").css("width","100%");
+            $("#m-secondary").css("width","0");
+        } else {
+            $("#m-primary").css("width","70%");
+            $("#m-secondary").css("width","30%");
+        }
+        if(is_has_word) {
+            var initPage = System.operateState.getInitPage(Report.report_id);
+            if (initPage == "switch_text") {
+                $('#m-primary iframe').attr('src', 'text_report.html');
+            } else {
+                $('#m-primary iframe').attr('src', 'standard_report.html');
+            }
+        } else {
+            $('#m-primary iframe').attr('src', 'text_report.html');
+            System.operateState.saveInitPage(Report.report_id,"switch_text");
+        }
+    })(Report,jQuery);
+
+    $(function () {
+        var iframe = document.getElementById('iframeId');
+        var iframeRight = document.getElementById('iframeRight');
+        window.addEventListener("message", function( event ) {
+
+            iframe.contentWindow.postMessage(event.data,'*');
+            iframeRight.contentWindow.postMessage(event.data,'*');
+            if ( event.data=="word_right" || event.data=="text_right" ) {
+                $('#m-secondary iframe').attr('src', 'sentence_detail.html');
+            }
+            if( event.data.FoldState == "block" ){
+                $("#m-primary").css("width","70%");
+                $("#m-secondary").css("width","30%");
+            }
+            if( event.data.FoldState == "none" ){
+                $("#m-primary").css("width","100%");
+                $("#m-secondary").css("width","0");
+            }
+        }, false);
+    });
+</script>
+</html>
