@@ -1,5 +1,7 @@
 # this is .gitignore file.
 # 以下是忽略的文件
-config
-data
+#忽略当前目录下的文件
+/config
+/data
 .vscode
+
