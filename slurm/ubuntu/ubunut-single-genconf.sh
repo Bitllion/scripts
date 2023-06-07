@@ -2,6 +2,7 @@
 #清理缓存包括日志、集群状态
 rm -rf /var/log/slurm*
 rm -rf /var/spool/slurm*
+rm -rf /etc/slurm*
 # ubuntu 安装slurm slurm-wlm
 apt install -y slurm-wlm slurm
 mkdir /var/log/slurm
