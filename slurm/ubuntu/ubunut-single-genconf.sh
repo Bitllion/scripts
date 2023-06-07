@@ -3,7 +3,7 @@
 rm -rf /var/log/slurm*
 rm -rf /var/spool/slurm*
 # ubuntu 安装slurm slurm-wlm
-apt install slurm-wlm slurm -y
+apt install -y slurm-wlm slurm
 mkdir /var/log/slurm
 # 判断系统语言是否为中文
 if [[ $(locale | grep LANG=zh_CN) ]]; then
@@ -18,6 +18,7 @@ else
     THREADS=$(lscpu | grep -E '^Thread' | awk '{print $4}' | head -n 1)
     MEMORY=$(free -m | grep Mem | awk '{print $2}')
 fi
+echo "Socket: $SOCKET , Cores: $CORES , Threads: $THREADS , Memory: $MEMORY MB"
 
 # 获取hostname
 HOSTNAME=$(hostname)
@@ -63,5 +64,3 @@ mv slurm.conf /etc/slurm/slurm.conf
 
 systemctl enable slurmctld --now
 systemctl enable slurmd --now
-
-sinfo
