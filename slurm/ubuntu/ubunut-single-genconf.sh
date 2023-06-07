@@ -1,5 +1,5 @@
 #!/bin/bash
-#清理缓存
+#清理缓存包括日志、集群状态
 rm -rf /var/log/slurm*
 rm -rf /var/spool/slurm*
 # ubuntu 安装slurm slurm-wlm
