@@ -1,4 +1,7 @@
 #!/bin/bash
+#清理缓存
+rm -rf /var/log/slurm*
+rm -rf /var/spool/slurm*
 # ubuntu 安装slurm slurm-wlm
 apt install slurm-wlm slurm -y
 mkdir /var/log/slurm
