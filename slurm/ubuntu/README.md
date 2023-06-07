@@ -1,0 +1,1 @@
+# ubuntu配置slurm
